@@ -1,0 +1,9 @@
+protein 39 g
+carbohydrate 244 g
+dietaryFiber 25.3 mg
+fat 42.5 g
+calcium 1144 mg
+iron 13.2 mg
+potassium 4515 mg
+magnesium 227 mg
+VitA 0.9 mg
