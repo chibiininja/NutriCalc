@@ -192,23 +192,23 @@ void print_report(vector<DV_hold> c_DV){
 void print_recommendation(vector<DV_hold> &cDV){
   vector<DV_hold> newDV;
   createDVReq(newDV, "dailyvaluerequirements.txt");
-  int minIndex = 0;
-  double minPerc = 1.0;
+  int maxIndex = 0;
+  double maxPerc = 0.0;
   double tempPerc;
 
   for(int i = 0; i < cDV.size(); i++){
     tempPerc = cDV[i].amt / newDV[i].amt;
-    if(tempPerc < minPerc && tempPerc > 0){
-      minIndex = i;
-      minPerc = tempPerc;
+    if(tempPerc > maxPerc && tempPerc > 0){
+      maxIndex = i;
+      maxPerc = tempPerc;
     }
   }
-  if(minPerc != 1.0) {
-    cout << "The nutrient you need most currently is " + cDV[minIndex].name << endl;
+  if(maxPerc != 1.0) {
+    cout << "The nutrient you need most currently is " + cDV[maxIndex].name << endl;
     cout << "You still need ";
-    cout << cDV[minIndex].name <<" "<< cDV[minIndex].amt << cDV[minIndex].units <<endl;
+    cout << cDV[maxIndex].name <<" "<< cDV[maxIndex].amt << cDV[maxIndex].units <<endl;
     cout << "Some foods high in this daily value are: " << endl;
-    printSuggested(cDV[minIndex].name);
+    printSuggested(cDV[maxIndex].name);
   }
 }
 
