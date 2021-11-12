@@ -45,7 +45,7 @@ void createDVReq(vector<DV_hold> &reqDV, string file){
 
 void writePrevious(vector<DV_hold> reqDV){
   ofstream out;
-  out.open("previous.txt", ios::out | ios::trunc);
+  out.open("txt_files/previous.txt", ios::out | ios::trunc);
   for(int i = 0; i < reqDV.size(); i++){
     out << reqDV[i].name << " " << reqDV[i].amt << " " << reqDV[i].units << "\n";
   }
@@ -54,7 +54,7 @@ void writePrevious(vector<DV_hold> reqDV){
 
 //creates the list of products that the user can input
 void createInput(vector<nutrients> &list){
-  ifstream in("foodinputs.txt");
+  ifstream in("txt_files/foodinputs.txt");
   string next = "";
   nutrients temp;
   while(in >> next){
@@ -191,7 +191,7 @@ void print_report(vector<DV_hold> c_DV){
 
 void print_recommendation(vector<DV_hold> &cDV){
   vector<DV_hold> newDV;
-  createDVReq(newDV, "dailyvaluerequirements.txt");
+  createDVReq(newDV, "txt_filesdailyvaluerequirements.txt");
   int maxIndex = 0;
   double maxPerc = 0.0;
   double tempPerc;
@@ -243,7 +243,7 @@ void userInput(vector<DV_hold> &cDV){
       check = false;
     }
     if(input == "RESET"){
-      createDVReq(cDV, "dailyvaluerequirements.txt");
+      createDVReq(cDV, "txt_files/dailyvaluerequirements.txt");
       count = 1;
       check = false;
     }
@@ -269,7 +269,7 @@ void userInput(vector<DV_hold> &cDV){
 int main(){
   //initiates vector of recommended DV of various nutrients
   vector<DV_hold> cDV;
-  createDVReq(cDV, "previous.txt");
+  createDVReq(cDV, "txt_files/previous.txt");
 
   //takes in user input of eaten foods
   userInput(cDV);
